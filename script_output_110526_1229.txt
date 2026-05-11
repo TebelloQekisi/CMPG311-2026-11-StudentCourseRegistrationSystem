@@ -1,0 +1,199 @@
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 4 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 12 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 23 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 44 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 60 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 78 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 91 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 99 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 112 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 126 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 139 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 148 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 160 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 171 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 172 Column: 0 
+
+
+ORA-01408: such column list already indexed
+
+https://docs.oracle.com/error-help/db/ora-01408/Error at Line: 173 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 174 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 175 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 176 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 177 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 178 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 179 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 180 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 181 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 184 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 189 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 197 Column: 0 
+
+
+ORA-00955: name is already used by an existing object
+
+https://docs.oracle.com/error-help/db/ora-00955/Error at Line: 205 Column: 0 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+GRADE_AVERAGE 
+------------- 
+              
+
+Elapsed: 00:00:00.004
+1 rows selected. 
+
+
+0 rows selected. 
+
+TOTAL_STUDENTS 
+-------------- 
+0              
+
+Elapsed: 00:00:00.001
+1 rows selected. 
+
+
+0 rows selected. 
+
+
+ORA-00904. 00000 -  "%s: invalid identifier"
+*Cause:    The identifier or column name entered was invalid.
+*Action:   Ensure the followingError at Line: 3 Column: 22 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+
+0 rows selected. 
+
+
+
+Trigger COURSE_ENROLLMENT_UPDATE compiled
+
+Elapsed: 00:00:00.032
+
+
+Trigger CHECKING_PREREQUISITES compiled
+
+Elapsed: 00:00:00.016
