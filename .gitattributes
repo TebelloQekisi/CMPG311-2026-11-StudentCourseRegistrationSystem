@@ -1,8 +1,2 @@
-# Ensure SQL files are counted in the language statistics
 *.sql linguist-detectable=true
-
-# Mark everything as vendored (ignored)...
-* linguist-vendored
-
-# ...except for our SQL files
-*.sql -linguist-vendored
+*.sql linguist-language=SQL
