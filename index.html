@@ -547,13 +547,15 @@
 
       </button>
 
-      <button class="nav-btn"
-              onclick="showPage('classSchedule')">
-
+      <button class="nav-btn" 
+                onclick="showPage('classSchedule')">
+                
         <i class="bi bi-calendar3"></i>
         Class Schedule
+        
+        </button>
 
-      </button>
+      
 
       <button class="nav-btn"
               onclick="showPage('grades')">
@@ -745,13 +747,13 @@
 
               <label>First Name</label>
 
-              <input type="text" 
+              <input type="text"
                      id="firstName"
                      class="form-control"
                      value="Craigh">
-              
-            </div>
 
+            </div>
+            
             <div class="col-md-6 mb-3">
 
               <label>Last Name</label>
@@ -760,7 +762,7 @@
                      id="lastName"
                      class="form-control"
                      value="Mbungele">
-              
+
             </div>
 
             <div class="col-md-6 mb-3">
@@ -770,15 +772,12 @@
               <input type="text"
                      class="form-control"
                      value="34567890" readonly>
-              
+
             </div>
 
             <div class="col-md-6 mb-3">
-              <label>Date of Birth</label>
-              <input type="date" 
-                     id="dob"
-                     class="form-control"
-                     value="2002-01-01">
+                <label>Date of Birth</label>
+                <input type="date" id="dob" class="form-control" value="2002-01-01">
             </div>
 
           </div>
@@ -786,39 +785,29 @@
         </div>
 
         <div class="modern-card mt-4">
-          <h4>
-            Residential Address
-          </h4>
-          <hr>
-          <div class="row">
+            <h4>
+                Residential Address
+            </h4>
+            <hr>
+            <div class="row">
 
-            <div class="col-md-12 mb-3">
-              <label>Street Address</label>
-              <input type="text"
-                id="addressStreet"
-                class="form-control"
-                value="123 University Drive">
-            </div>
+                <div class="col-md-12 mb-3">
+                    <label>Street Address</label>
+                    <input type="text" id="addressStreet" class="form-control" value="123 University Drive">
+                </div>
 
-            <div class="col-md-6 mb-3">
-              <label>City</label>
-              <input type="text"
-                id="city"
-                class="form-control"
-                value="Mahikeng">
-            </div>
+                <div class="col-md-6 mb-3">
+                    <label>City</label>
+                    <input type="text" id="city" class="form-control" value="Mahikeng">
+                </div>
 
-            <div class="col-md-6 mb-3">
-              <label>Postal Code</label>
-              <input type="text"
-                id="postalCode"
-                class="form-control"
-                value="2745">
-            </div>
-            
-          </div>
-          
+                <div class="col-md-6 mb-3">
+                    <label>Postal Code</label>
+                    <input type="text" id="postalCode" class="form-control" value="2745">
+                </div>
         </div>
+
+      </div>
       </div>
 
       <!-- ADMIN PROFILE -->
@@ -895,7 +884,6 @@
   </div>
 </div>
 
-
 <!-- ========================= -->
 <!-- GRADES PAGE -->
 <!-- ========================= -->
@@ -967,6 +955,37 @@
 
   </div>
 
+</div>
+
+<!--=====================-->
+<!-- CLASS SCHEDULE PAGE -->
+<!--=====================-->
+
+<div id="classSchedule" class="page">
+
+  <h2 class="page-title">My Class TimeTable</h2>
+    <div class="modern-card">
+
+        <div class="table-responsive">
+            <table class="table table-modern">
+                
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Module</th>
+                        <th>Time Slot</th>
+                        <th>Venue & Room</th>
+                        <th>Type</th>
+                    </tr>
+    
+                </thead>
+                
+                <tbody id="scheduleTableBody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
@@ -1174,6 +1193,9 @@ function loginUser(){
 
     showPage("dashboard");
 
+    loadModules();
+    loadClassSchedule();
+
   }
 
   // =========================
@@ -1278,9 +1300,126 @@ function toggleTheme(){
 
 }
 
+// ============================
+// REGISTRATION BUSINESS LOGIC
+// ============================
+
+const modules = [
+  {
+    code: "CMPG311",
+    name: "Systems Analysis and Design",
+    credits: 20,
+    current: 49,
+    max: 100,
+    pre: "None"
+  },
+  {
+    code: "CMPG313",
+    name: "Artificial Intelligence",
+    credits: 20,
+    current: 80,
+    max: 80,
+    pre: "CMPG311"
+  }
+];
+
+// Class schedule data
+const classSchedule = [
+    {
+        day: "Monday",
+        module: "CMPG311",
+        time: "08:00 - 10:00",
+        venue: "Main Building",
+        room: "Room 101",
+        type: "Lecture"
+    },
+    {
+        day: "Wednesday",
+        module: "CMPG313",
+        time: "14:00 - 16:00",
+        venue: "Main Building",
+        room: "Room 202",
+        type: "Lecture"
+    }
+];
+
+function loadClassSchedule() {
+    const scheduleBody = document.getElementById('scheduleTableBody');
+    if(!scheduleBody) return;
+    scheduleBody.innerHTML = '';
+
+    //Schedule sorted by day and time
+    classSchedule.forEach(item => {
+        scheduleBody.innerHTML += `
+            <tr>
+                <td><strong>${item.day}</strong></td>
+                <td>${item.module}</td>
+                <td><span class="badge-modern badge-primary-modern">${item.time}</span></td>
+                <td>${item.venue} - ${item.room}</td>
+                <td><small class="text-secondary">${item.type}</small></td>
+            </tr>`;
+    });
+}
+
+// Student status 
+const studentStatus = {
+    financialHold: false,
+    passedModules: ['CMPG211'],
+}
+
+function loadModules() {
+    const tableBody = document.getElementById('moduleTableBody');
+    if(!tableBody) return;
+    tableBody.innerHTML = '';
+
+    modules.forEach(mod => {
+        const isFull = mod.current >= mod.max;
+        const hasPre = mod.pre === 'None' || studentStatus.passedModules.includes(mod.pre);
+
+        tableBody.innerHTML += `
+            <tr>
+                <td>${mod.code}</td>
+                <td>${mod.name}</td>
+                <td>${mod.credits}</td>
+                <td>${mod.current}/${mod.max}</td>
+                <td>
+                    <span class="badge-modern ${hasPre ? 'badge-success' : 'badge-danger'}">
+                        ${mod.pre}
+                    </span>
+                </td>
+                <td>
+                    <button class="modern-btn ${isFull ? 'btn-warning' : 'btn-primary-modern'}"
+                            onclick="handleRegistration('${mod.code}', ${isFull}, ${hasPre})">
+                        ${isFull ? 'Join Waitlist' : 'Register'}
+                    </button>
+                </td>
+            </tr>`;
+    });
+}
+
+function handleRegistration(code, isFull, hasPre) {
+    const alertBox = document.getElementById('registrationAlert');
+
+    // Financial Hold check
+    if(studentStatus.financialHold) {
+        alertBox.innerHTML = `<div class="alert alert-danger">Registration Blocked: Outstanding Fees.</div>`;
+        return;
+  }
+
+    // Prerequisite verification
+    if (!hasPre) {
+        alertBox.innerHTML = `<div class="alert alert-danger">Error: Prerequisite module not passed</div>`;
+        return;
+    }
+
+    // Waitlist
+    if (isFull) {
+        alertBox.innerHTML = `<div class="alert alert-warning">Module Full. Added to Waitlist for ${code}.</div>`;
+    } else {
+        alertBox.innerHTML = `<div class="alert alert-success">Successfully Registered for ${code}.</div>`;
+    }
+}
+
 </script>
-
-
-
 </body>
 </html>
