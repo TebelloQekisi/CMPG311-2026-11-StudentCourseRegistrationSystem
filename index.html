@@ -24,8 +24,6 @@
     }
 
     :root{
-
-      /* LIGHT MODE */
       --bg-color:#eef2ff;
       --sidebar-bg:linear-gradient(180deg,#2563eb,#1e40af);
       --card-bg:#ffffff;
@@ -34,12 +32,9 @@
       --input-bg:#ffffff;
       --table-head:#2563eb;
       --shadow:0 10px 25px rgba(0,0,0,0.06);
-
     }
 
     body.dark-mode{
-
-      /* DARK MODE */
       --bg-color:#0f172a;
       --sidebar-bg:linear-gradient(180deg,#111827,#1f2937);
       --card-bg:#1e293b;
@@ -48,7 +43,6 @@
       --input-bg:#334155;
       --table-head:#3b82f6;
       --shadow:0 10px 25px rgba(0,0,0,0.3);
-
     }
 
     body{
@@ -58,22 +52,36 @@
       overflow-x:hidden;
     }
 
+    /* ── SIDEBAR ─────────────────────────────────── */
     .sidebar{
       width:260px;
       height:100vh;
       position:fixed;
       left:0;
       top:0;
+      overflow-y:auto;
       background:var(--sidebar-bg);
       padding:25px;
       color:white;
+      z-index:1000;
     }
 
     .logo{
-      font-size:28px;
+      font-size:24px;
       font-weight:700;
       text-align:center;
-      margin-bottom:40px;
+      margin-bottom:30px;
+      padding-bottom:20px;
+      border-bottom:1px solid rgba(255,255,255,0.15);
+    }
+
+    .sidebar-section-label{
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.45);
+      margin:18px 0 8px 8px;
     }
 
     .nav-btn{
@@ -81,12 +89,13 @@
       border:none;
       background:transparent;
       color:white;
-      padding:14px 18px;
+      padding:12px 16px;
       border-radius:14px;
       text-align:left;
-      margin-bottom:10px;
+      margin-bottom:6px;
       transition:0.3s;
       font-weight:500;
+      font-size:14px;
     }
 
     .nav-btn:hover{
@@ -94,56 +103,73 @@
       transform:translateX(5px);
     }
 
+    .nav-btn.active-nav{
+      background:rgba(255,255,255,0.2);
+      border-left:3px solid white;
+    }
+
     .nav-btn i{
       margin-right:10px;
+      width:18px;
+    }
+
+    /* ── MAIN ────────────────────────────────────── */
+    #mainWebsite{
+      display:flex;
+      min-height:100vh;
     }
 
     .main-content{
       margin-left:260px;
+      width:calc(100% - 260px);
+      min-height:100vh;
       padding:30px;
+      overflow-x:hidden;
     }
 
+    /* ── TOPBAR ──────────────────────────────────── */
     .topbar{
       background:var(--card-bg);
       border-radius:20px;
-      padding:20px 25px;
+      padding:18px 25px;
       display:flex;
       justify-content:space-between;
       align-items:center;
       box-shadow:var(--shadow);
-      margin-bottom:30px;
+      margin-bottom:28px;
       transition:0.3s;
     }
 
     .topbar h4{
       color:var(--text-color);
       font-weight:600;
+      margin:0;
+      font-size:16px;
     }
 
     .top-actions{
       display:flex;
       align-items:center;
-      gap:15px;
+      gap:12px;
     }
 
     .theme-btn{
-      width:45px;
-      height:45px;
+      width:42px;
+      height:42px;
       border:none;
       border-radius:50%;
       background:#2563eb;
       color:white;
-      font-size:18px;
+      font-size:16px;
       transition:0.3s;
+      cursor:pointer;
     }
 
-    .theme-btn:hover{
-      transform:scale(1.05);
-    }
+    .theme-btn:hover{ transform:scale(1.08); }
 
     .profile-circle{
-      width:45px;
-      height:45px;
+      width:42px;
+      height:42px;
       border-radius:50%;
       background:#2563eb;
       color:white;
@@ -151,109 +177,119 @@
       align-items:center;
       justify-content:center;
       font-weight:600;
+      font-size:14px;
     }
 
-    .page{
-      display:none;
-      animation:fade 0.4s ease;
-    }
+    /* ── PAGES ───────────────────────────────────── */
+    .page{ display:none; }
 
     .active-page{
       display:block;
+      animation:fade 0.35s ease;
     }
 
     @keyframes fade{
-      from{
-        opacity:0;
-        transform:translateY(10px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{ opacity:0; transform:translateY(12px); }
+      to{   opacity:1; transform:translateY(0);    }
     }
 
     .page-title{
-      font-size:30px;
+      font-size:26px;
       font-weight:700;
       color:var(--text-color);
-      margin-bottom:25px;
+      margin-bottom:22px;
     }
 
+    /* ── CARDS ───────────────────────────────────── */
     .modern-card{
       background:var(--card-bg);
-      border-radius:24px;
-      padding:25px;
+      border-radius:20px;
+      padding:24px;
       box-shadow:var(--shadow);
       transition:0.3s;
       border:none;
     }
 
-    .modern-card:hover{
-      transform:translateY(-5px);
-    }
+    .modern-card:hover{ transform:translateY(-3px); }
 
     .stats-card h2{
-      font-size:36px;
+      font-size:34px;
       color:#2563eb;
       font-weight:700;
     }
 
-    .stats-card p{
-      color:var(--secondary-text);
+    .stats-card p{ color:var(--secondary-text); margin:0; }
+
+    .stats-card .stat-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:#eff6ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      color:#2563eb;
+      margin-bottom:14px;
     }
 
+    /* ── FORMS ───────────────────────────────────── */
     label{
       color:var(--text-color);
-      margin-bottom:8px;
+      margin-bottom:6px;
       font-weight:500;
+      font-size:14px;
+      display:block;
     }
 
-    .form-control,
-    .form-select{
+    .form-control, .form-select{
       background:var(--input-bg);
       border:1px solid #cbd5e1;
-      border-radius:14px;
-      padding:12px;
+      border-radius:12px;
+      padding:11px 14px;
       color:var(--text-color);
+      font-size:14px;
     }
 
-    .form-control:focus,
-    .form-select:focus{
+    .form-control:focus, .form-select:focus{
       box-shadow:none;
       border-color:#2563eb;
       background:var(--input-bg);
       color:var(--text-color);
     }
 
+    /* ── BUTTONS ─────────────────────────────────── */
     .modern-btn{
       border:none;
-      border-radius:14px;
-      padding:12px 18px;
+      border-radius:12px;
+      padding:10px 18px;
       font-weight:600;
       transition:0.3s;
+      font-size:14px;
+      cursor:pointer;
     }
 
-    .btn-primary-modern{
-      background:#2563eb;
-      color:white;
+    .btn-primary-modern{ background:#2563eb; color:white; }
+    .btn-primary-modern:hover{ background:#1d4ed8; }
+
+    .btn-success-modern{ background:#10b981; color:white; }
+    .btn-success-modern:hover{ background:#059669; }
+
+    .btn-danger-modern{ background:#ef4444; color:white; }
+    .btn-danger-modern:hover{ background:#dc2626; }
+
+    .btn-warning-modern{ background:#f59e0b; color:white; }
+    .btn-warning-modern:hover{ background:#d97706; }
+
+    .btn-sm-modern{
+      padding:6px 14px;
+      font-size:12px;
+      border-radius:8px;
     }
 
-    .btn-primary-modern:hover{
-      background:#1d4ed8;
-    }
-
-    .btn-success-modern{
-      background:#10b981;
-      color:white;
-    }
-
-    .btn-success-modern:hover{
-      background:#059669;
-    }
-
+    /* ── TABLES ──────────────────────────────────── */
     .table-modern{
-      border-radius:18px;
+      border-radius:14px;
       overflow:hidden;
       color:var(--text-color);
     }
@@ -263,168 +299,210 @@
       color:white;
     }
 
-    .table-modern tbody{
-      background:var(--card-bg);
-    }
+    .table-modern thead th{ padding:14px 16px; font-weight:600; font-size:13px; }
 
+    .table-modern tbody{ background:var(--card-bg); }
+
+    .table-modern tbody tr{ transition:0.2s; }
+
+    .table-modern tbody tr:hover{ background:rgba(37,99,235,0.05); }
+
+    .table-modern td{ padding:13px 16px; font-size:13px; vertical-align:middle; }
+
+    /* ── BADGES ──────────────────────────────────── */
     .badge-modern{
-      padding:8px 12px;
+      padding:5px 12px;
       border-radius:30px;
-      font-size:12px;
+      font-size:11px;
       font-weight:600;
     }
 
-    .badge-success{
-      background:#dcfce7;
-      color:#166534;
+    .badge-success{ background:#dcfce7; color:#166534; }
+    .badge-danger{  background:#fee2e2; color:#991b1b; }
+    .badge-warning{ background:#fef3c7; color:#92400e; }
+    .badge-info{    background:#dbeafe; color:#1e40af; }
+    .badge-gray{    background:#f1f5f9; color:#475569; }
+
+    /* ── SEARCH BAR ──────────────────────────────── */
+    .search-bar{
+      position:relative;
+      max-width:320px;
     }
 
-    .badge-danger{
-      background:#fee2e2;
-      color:#991b1b;
+    .search-bar input{
+      padding-left:40px;
+      border-radius:12px;
     }
 
-    footer{
-      margin-top:40px;
-      text-align:center;
+    .search-bar i{
+      position:absolute;
+      left:13px;
+      top:50%;
+      transform:translateY(-50%);
       color:var(--secondary-text);
     }
 
-    @media(max-width:992px){
-
-      .sidebar{
-        width:100%;
-        height:auto;
-        position:relative;
-      }
-
-      .main-content{
-        margin-left:0;
-      }
-
+    /* ── STAT ROW ────────────────────────────────── */
+    .stat-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
     }
-    .profile-avatar{
 
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:#2563eb;
-  color:white;
+    /* ── MODAL ───────────────────────────────────── */
+    .modal-content{
+      border-radius:20px;
+      border:none;
+    }
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    .modal-header{
+      background:#2563eb;
+      color:white;
+      border-radius:20px 20px 0 0;
+      border:none;
+    }
 
-  font-size:24px;
-  font-weight:700;
+    .modal-header .btn-close{ filter:invert(1); }
 
-}
+    /* ── TOAST ───────────────────────────────────── */
+    .toast-container{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      z-index:9999;
+    }
 
-.admin-avatar{
+    .toast-msg{
+      background:#1e293b;
+      color:white;
+      padding:14px 20px;
+      border-radius:14px;
+      margin-top:10px;
+      font-size:13px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      animation:slideUp 0.3s ease;
+    }
 
-  background:#10b981;
+    .toast-msg.success i{ color:#10b981; }
+    .toast-msg.danger  i{ color:#ef4444; }
+    .toast-msg.warning i{ color:#f59e0b; }
 
-}
+    @keyframes slideUp{
+      from{ opacity:0; transform:translateY(20px); }
+      to{   opacity:1; transform:translateY(0);    }
+    }
 
-.logout-btn{
-  margin-top:20px;
-  background:rgba(255,255,255,0.12);
-}
+    /* ── PROGRESS BAR ────────────────────────────── */
+    .capacity-bar{
+      width:100%;
+      height:8px;
+      background:#e2e8f0;
+      border-radius:10px;
+      overflow:hidden;
+    }
 
-.logout-btn:hover{
-  background:#ef4444;
-  transform:translateX(5px);
-}
+    .capacity-fill{
+      height:100%;
+      border-radius:10px;
+      background:#2563eb;
+      transition:width 0.5s ease;
+    }
 
-/* LOGIN PAGE */
-.login-screen{
-  width:100%;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(135deg,#2563eb,#1e40af);
-  padding:20px;
-}
+    .capacity-fill.high{ background:#ef4444; }
+    .capacity-fill.med{  background:#f59e0b; }
+    .capacity-fill.low{  background:#10b981; }
 
-.login-card{
-  width:100%;
-  max-width:450px;
-  background:white;
-  padding:40px;
-  border-radius:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-}
+    /* ── LOGIN ───────────────────────────────────── */
+    .login-screen{
+      width:100%;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#2563eb,#1e40af);
+      padding:20px;
+    }
 
-.login-icon{
-  font-size:70px;
-  color:#2563eb;
-}
+    .login-card{
+      width:100%;
+      max-width:440px;
+      background:white;
+      padding:40px;
+      border-radius:28px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    }
 
-/* MAIN WEBSITE */
-#mainWebsite{
-  display:flex;
-  min-height:100vh;
-}
+    .login-icon{ font-size:64px; color:#2563eb; }
 
-/* SIDEBAR */
-.sidebar{
-  width:260px;
-  height:100vh;
-  position:fixed;
-  left:0;
-  top:0;
-  overflow-y:auto;
-  background:var(--sidebar-bg);
-  padding:25px;
-  color:white;
-  z-index:1000;
-}
+    /* ── LOGOUT ──────────────────────────────────── */
+    .logout-btn{
+      margin-top:16px;
+      background:rgba(255,255,255,0.1);
+    }
 
-.main-content{
-  margin-left:260px;
-  width:calc(100% - 260px);
-  min-height:100vh;
-  padding:30px;
-  overflow-x:hidden;
-}
+    .logout-btn:hover{
+      background:#ef4444;
+      transform:translateX(5px);
+    }
 
-/* PAGE ANIMATION */
-.page{
-  display:none;
-}
+    /* ── REPORT CHART BARS ───────────────────────── */
+    .chart-bar-wrap{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      height:140px;
+      padding-bottom:8px;
+      border-bottom:2px solid #e2e8f0;
+    }
 
-.active-page{
-  display:block;
-  animation:fade 0.3s ease;
-}
+    .chart-col{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:4px;
+      flex:1;
+    }
 
-/* RESPONSIVE */
-@media(max-width:992px){
+    .chart-bar{
+      width:100%;
+      border-radius:8px 8px 0 0;
+      background:#2563eb;
+      transition:height 0.6s ease;
+      min-height:8px;
+    }
 
-  #mainWebsite{
-    flex-direction:column;
-  }
+    .chart-label{
+      font-size:10px;
+      color:var(--secondary-text);
+      text-align:center;
+    }
 
-  .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
-  }
+    /* ── HOLD CARD ───────────────────────────────── */
+    .hold-card{
+      border-left:4px solid #ef4444;
+      padding:16px 20px;
+      border-radius:0 14px 14px 0;
+      background:var(--card-bg);
+      box-shadow:var(--shadow);
+      margin-bottom:14px;
+      transition:0.3s;
+    }
 
-  .main-content{
-    margin-left:0;
-    width:100%;
-    padding:20px;
-  }
+    .hold-card:hover{ transform:translateX(4px); }
 
-  .topbar{
-    flex-direction:column;
-    gap:15px;
-    text-align:center;
-  }
+    .hold-card.resolved{ border-left-color:#10b981; }
 
-}
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media(max-width:992px){
+      #mainWebsite{ flex-direction:column; }
+      .sidebar{ position:relative; width:100%; height:auto; }
+      .main-content{ margin-left:0; width:100%; padding:20px; }
+      .topbar{ flex-direction:column; gap:12px; text-align:center; }
+    }
 
   </style>
 </head>
@@ -432,81 +510,52 @@
 <body>
 
 <!-- ========================= -->
-<!-- LOGIN PAGE -->
+<!-- TOAST CONTAINER           -->
+<!-- ========================= -->
+<div class="toast-container" id="toastContainer"></div>
+
+
+<!-- ========================= -->
+<!-- LOGIN PAGE                -->
 <!-- ========================= -->
 
 <div id="loginPage" class="login-screen">
-
   <div class="login-card">
 
     <div class="text-center mb-4">
-
       <i class="bi bi-mortarboard-fill login-icon"></i>
-
-      <h2 class="fw-bold mt-3">
-        University Management System
-      </h2>
-
-      <p class="text-secondary">
-        Login to continue
-      </p>
-
+      <h2 class="fw-bold mt-3">University Management System</h2>
+      <p class="text-secondary">Login to continue</p>
     </div>
 
     <div class="mb-3">
-
       <label>Email Address</label>
-
-      <input type="email"
-             id="loginEmail"
-             class="form-control"
-             placeholder="Enter email">
-
+      <input type="email" id="loginEmail" class="form-control" placeholder="Enter email">
     </div>
 
     <div class="mb-3">
-
       <label>Password</label>
-
-      <input type="password"
-             id="loginPassword"
-             class="form-control"
-             placeholder="Enter password">
-
+      <input type="password" id="loginPassword" class="form-control" placeholder="Enter password">
     </div>
 
     <div class="mb-4">
-
       <label>Select Role</label>
-
       <select id="loginRole" class="form-select">
-
-        <option value="student">
-          Student
-        </option>
-
-        <option value="admin">
-          Admin
-        </option>
-
+        <option value="student">Student</option>
+        <option value="admin">Admin</option>
       </select>
-
     </div>
 
-    <button class="modern-btn btn-primary-modern w-100"
-            onclick="loginUser()">
-
-      Login
-
+    <button class="modern-btn btn-primary-modern w-100" onclick="loginUser()">
+      <i class="bi bi-box-arrow-in-right me-2"></i>Login
     </button>
 
   </div>
-
 </div>
 
 
 <!-- ========================= -->
-<!-- MAIN WEBSITE -->
+<!-- MAIN WEBSITE              -->
 <!-- ========================= -->
 
 <div id="mainWebsite" style="display:none;">
@@ -515,92 +564,64 @@
   <div class="sidebar">
 
     <div class="logo">
-      CMPG311
+      <i class="bi bi-mortarboard-fill me-2"></i>CMPG311
     </div>
 
     <!-- COMMON -->
-    <button class="nav-btn"
-        id="dashboardBtn"
-        onclick="showPage('dashboard')">
+    <p class="sidebar-section-label">General</p>
 
-     <i class="bi bi-grid-fill"></i>
-     Dashboard
-
+    <button class="nav-btn" id="dashboardBtn" onclick="showPage('dashboard',this)">
+      <i class="bi bi-grid-fill"></i>Dashboard
     </button>
 
-    <button class="nav-btn"
-            onclick="showPage('profile')">
-
-      <i class="bi bi-person-circle"></i>
-      Profile
-
+    <button class="nav-btn" onclick="showPage('profile',this)">
+      <i class="bi bi-person-circle"></i>Profile
     </button>
 
     <!-- STUDENT MENU -->
     <div id="studentMenu">
-
-      <button class="nav-btn"
-              onclick="showPage('courses')">
-
-        <i class="bi bi-book-fill"></i>
-        Courses
-
+      <p class="sidebar-section-label">Student</p>
+      <button class="nav-btn" onclick="showPage('courses',this)">
+        <i class="bi bi-book-fill"></i>Courses
       </button>
-
-      <button class="nav-btn"
-              onclick="showPage('grades')">
-
-        <i class="bi bi-journal-check"></i>
-        Grades
-
+      <button class="nav-btn" onclick="showPage('grades',this)">
+        <i class="bi bi-journal-check"></i>Grades
       </button>
-
-      <button class="nav-btn"
-              onclick="showPage('payments')">
-
-        <i class="bi bi-credit-card-fill"></i>
-        Payments
-
+      <button class="nav-btn" onclick="showPage('payments',this)">
+        <i class="bi bi-credit-card-fill"></i>Payments
       </button>
-
     </div>
 
     <!-- ADMIN MENU -->
     <div id="adminMenu" style="display:none;">
-
-      <button class="nav-btn"
-              onclick="showPage('users')">
-
-        <i class="bi bi-people-fill"></i>
-        User Management
-
+      <p class="sidebar-section-label">Administration</p>
+      <button class="nav-btn" onclick="showPage('users',this)">
+        <i class="bi bi-people-fill"></i>User Management
       </button>
-
-      <button class="nav-btn"
-              onclick="showPage('courseManagement')">
-
-        <i class="bi bi-journal-bookmark-fill"></i>
-        Course Management
-
+      <button class="nav-btn" onclick="showPage('courseManagement',this)">
+        <i class="bi bi-journal-bookmark-fill"></i>Course Management
       </button>
-
-      <button class="nav-btn"
-              onclick="showPage('gradeManagement')">
-
-        <i class="bi bi-pencil-square"></i>
-        Grade Management
-
+      <button class="nav-btn" onclick="showPage('gradeManagement',this)">
+        <i class="bi bi-pencil-square"></i>Grade Management
       </button>
-
+      <p class="sidebar-section-label">Advanced</p>
+      <button class="nav-btn" onclick="showPage('enrollmentManagement',this)">
+        <i class="bi bi-person-check-fill"></i>Enrollment Management
+      </button>
+      <button class="nav-btn" onclick="showPage('waitlistManagement',this)">
+        <i class="bi bi-hourglass-split"></i>Waitlist Management
+      </button>
+      <button class="nav-btn" onclick="showPage('holdsManagement',this)">
+        <i class="bi bi-slash-circle-fill"></i>Registration Holds
+      </button>
+      <button class="nav-btn" onclick="showPage('reports',this)">
+        <i class="bi bi-bar-chart-fill"></i>Reports
+      </button>
     </div>
 
     <!-- LOGOUT -->
-    <button class="nav-btn mt-4"
-            onclick="logoutUser()">
-
-      <i class="bi bi-box-arrow-left"></i>
-      Logout
-
+    <button class="nav-btn logout-btn mt-3" onclick="logoutUser()">
+      <i class="bi bi-box-arrow-left"></i>Logout
     </button>
 
   </div>
@@ -610,615 +631,1387 @@
 
     <!-- TOPBAR -->
     <div class="topbar">
-
-      <h4>
-        University Management System
-      </h4>
-
+      <h4 id="topbarTitle">University Management System</h4>
       <div class="top-actions">
-
-        <button class="theme-btn"
-                onclick="toggleTheme()">
-
-          <i class="bi bi-moon-fill"
-             id="themeIcon"></i>
-
+        <button class="theme-btn" onclick="toggleTheme()">
+          <i class="bi bi-moon-fill" id="themeIcon"></i>
         </button>
-
-        <div class="profile-circle"
-             id="profileInitials">
-
-          CM
-
-        </div>
-
+        <div class="profile-circle" id="profileInitials">CM</div>
       </div>
-
     </div>
 
+
     <!-- ========================= -->
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD                 -->
     <!-- ========================= -->
 
-    <div id="dashboard"
-         class="page active-page">
-
-      <h2 class="page-title">
-        Dashboard
-      </h2>
-
+    <div id="dashboard" class="page active-page">
+      <h2 class="page-title">Dashboard</h2>
       <div class="row g-4">
 
         <div class="col-md-3">
-
           <div class="modern-card stats-card">
-
+            <div class="stat-icon"><i class="bi bi-book-fill"></i></div>
             <h2>6</h2>
-
-            <p>
-              Registered Courses
-            </p>
-
+            <p>Registered Courses</p>
           </div>
-
         </div>
 
         <div class="col-md-3">
-
           <div class="modern-card stats-card">
-
+            <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
             <h2>3.8</h2>
-
-            <p>
-              GPA
-            </p>
-
+            <p>GPA</p>
           </div>
-
         </div>
 
         <div class="col-md-3">
-
           <div class="modern-card stats-card">
-
+            <div class="stat-icon"><i class="bi bi-credit-card-fill"></i></div>
             <h2>R2500</h2>
-
-            <p>
-              Fees Due
-            </p>
-
+            <p>Fees Due</p>
           </div>
-
         </div>
 
         <div class="col-md-3">
-
           <div class="modern-card stats-card">
-
+            <div class="stat-icon"><i class="bi bi-bell-fill"></i></div>
             <h2>4</h2>
-
-            <p>
-              Notifications
-            </p>
-
+            <p>Notifications</p>
           </div>
-
         </div>
 
       </div>
-
     </div>
 
+
     <!-- ========================= -->
-    <!-- PROFILE -->
+    <!-- PROFILE                   -->
     <!-- ========================= -->
 
     <div id="profile" class="page">
+      <h2 class="page-title">Profile</h2>
 
-      <h2 class="page-title">
-        Profile
-      </h2>
-
-      <!-- STUDENT PROFILE -->
-      <div id="studentProfile"
-           class="profile-section">
-
+      <div id="studentProfile">
         <div class="modern-card">
-
-          <h4>
-            Student Information
-          </h4>
-
-          <hr>
-
+          <h4>Student Information</h4><hr>
           <div class="row">
-
             <div class="col-md-6 mb-3">
-
               <label>Full Name</label>
-
-              <input type="text"
-                     class="form-control"
-                     value="Craigh Mbungele">
-
+              <input type="text" class="form-control" value="Craigh Mbungele">
             </div>
-
             <div class="col-md-6 mb-3">
-
               <label>Student Number</label>
-
-              <input type="text"
-                     class="form-control"
-                     value="34567890">
-
+              <input type="text" class="form-control" value="34567890">
             </div>
-
           </div>
-
         </div>
-
       </div>
 
-      <!-- ADMIN PROFILE -->
-      <div id="staffProfile"
-           class="profile-section"
-           style="display:none;">
-
+      <div id="staffProfile" style="display:none;">
         <div class="modern-card">
-
-          <h4>
-            Administrator Information
-          </h4>
-
-          <hr>
-
+          <h4>Administrator Information</h4><hr>
           <div class="row">
-
             <div class="col-md-6 mb-3">
-
               <label>Admin Name</label>
-
-              <input type="text"
-                     class="form-control"
-                     value="Admin User">
-
+              <input type="text" class="form-control" value="Admin User">
             </div>
-
             <div class="col-md-6 mb-3">
-
               <label>Staff ID</label>
-
-              <input type="text"
-                     class="form-control"
-                     value="ADM001">
-
+              <input type="text" class="form-control" value="ADM001">
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
+
 
     <!-- ========================= -->
-<!-- COURSES PAGE -->
-<!-- ========================= -->
+    <!-- COURSES                   -->
+    <!-- ========================= -->
 
-<div id="courses" class="page">
-
-  <h2 class="page-title">
-    Courses
-  </h2>
-  <div class="modern-card">
-    <div id="registrationAlert"></div>
-
-    <div class="table responsive">
-        <table class="table table-modern">
+    <div id="courses" class="page">
+      <h2 class="page-title">Courses</h2>
+      <div class="modern-card">
+        <div id="registrationAlert"></div>
+        <div class="table-responsive">
+          <table class="table table-modern">
             <thead>
-                <tr>
-                    <th>Module Code</th>
-                    <th>Module Name</th>
-                    <th>Credits</th>
-                    <th>Capacity</th>
-                    <th>Prerequisite</th>
-                    <th>Actions</th>
-                </tr>
+              <tr>
+                <th>Module Code</th>
+                <th>Module Name</th>
+                <th>Credits</th>
+                <th>Capacity</th>
+                <th>Prerequisite</th>
+                <th>Actions</th>
+              </tr>
             </thead>
-            <tbody id="moduleTableBody">
-            </tbody>
+            <tbody id="moduleTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GRADES                    -->
+    <!-- ========================= -->
+
+    <div id="grades" class="page">
+      <h2 class="page-title">Grades</h2>
+      <div class="modern-card">
+        <table class="table table-modern">
+          <thead>
+            <tr><th>Module</th><th>Grade</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CMPG311</td><td>78%</td></tr>
+            <tr><td>CMPG313</td><td>85%</td></tr>
+          </tbody>
         </table>
-    </div>
-  </div>
-</div>
-
-
-<!-- ========================= -->
-<!-- GRADES PAGE -->
-<!-- ========================= -->
-
-<div id="grades" class="page">
-
-  <h2 class="page-title">
-    Grades
-  </h2>
-
-  <div class="modern-card">
-
-    <table class="table table-modern">
-
-      <thead>
-
-        <tr>
-
-          <th>Module</th>
-          <th>Grade</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        <tr>
-
-          <td>CMPG311</td>
-          <td>78%</td>
-
-        </tr>
-
-        <tr>
-
-          <td>CMPG313</td>
-          <td>85%</td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- PAYMENTS PAGE -->
-<!-- ========================= -->
-
-<div id="payments" class="page">
-
-  <h2 class="page-title">
-    Payments
-  </h2>
-
-  <div class="modern-card">
-
-    <div class="alert alert-warning">
-
-      Outstanding Balance:
-      <strong>R2500</strong>
-
+      </div>
     </div>
 
-  </div>
 
-</div>
+    <!-- ========================= -->
+    <!-- PAYMENTS                  -->
+    <!-- ========================= -->
 
-
-<!-- ========================= -->
-<!-- USER MANAGEMENT PAGE -->
-<!-- ========================= -->
-
-<div id="users" class="page">
-
-  <h2 class="page-title">
-    User Management
-  </h2>
-
-  <div class="modern-card">
-
-    <table class="table table-modern">
-
-      <thead>
-
-        <tr>
-
-          <th>ID</th>
-          <th>Name</th>
-          <th>Role</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        <tr>
-
-          <td>34567890</td>
-          <td>Craigh Mbungele</td>
-          <td>Student</td>
-
-        </tr>
-
-        <tr>
-
-          <td>ADM001</td>
-          <td>Admin User</td>
-          <td>Admin</td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
+    <div id="payments" class="page">
+      <h2 class="page-title">Payments</h2>
+      <div class="modern-card">
+        <div class="alert alert-warning">
+          Outstanding Balance: <strong>R2500</strong>
+        </div>
+      </div>
+    </div>
 
 
-<!-- ========================= -->
-<!-- COURSE MANAGEMENT PAGE -->
-<!-- ========================= -->
+    <!-- ========================= -->
+    <!-- USER MANAGEMENT           -->
+    <!-- ========================= -->
 
-<div id="courseManagement" class="page">
+    <div id="users" class="page">
+      <h2 class="page-title">User Management</h2>
 
-  <h2 class="page-title">
-    Course Management
-  </h2>
+      <div class="modern-card mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="search-bar">
+            <i class="bi bi-search"></i>
+            <input type="text" class="form-control" id="userSearch"
+                   placeholder="Search users..." oninput="filterUsers()">
+          </div>
+          <button class="modern-btn btn-primary-modern"
+                  onclick="openModal('addUserModal')">
+            <i class="bi bi-plus-lg me-1"></i>Add User
+          </button>
+        </div>
 
-  <div class="row g-4">
+        <div class="table-responsive">
+          <table class="table table-modern" id="userTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody">
+              <tr>
+                <td>40939170</td>
+                <td>Tebello Qekisi</td>
+                <td>40939170@mynwu.ac.za</td>
+                <td><span class="badge-modern badge-info">Student</span></td>
+                <td><span class="badge-modern badge-success">Active</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('User edited','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('Tebello Qekisi')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>43056717</td>
+                <td>Thapelo Kgaphola</td>
+                <td>43056717@mynwu.ac.za</td>
+                <td><span class="badge-modern badge-info">Student</span></td>
+                <td><span class="badge-modern badge-success">Active</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('User edited','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('Thapelo Kgaphola')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>ADM001</td>
+                <td>Admin User</td>
+                <td>admin@nwu.ac.za</td>
+                <td><span class="badge-modern badge-warning">Admin</span></td>
+                <td><span class="badge-modern badge-success">Active</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('User edited','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('Admin User')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    <div class="col-md-6">
+
+    <!-- ========================= -->
+    <!-- COURSE MANAGEMENT         -->
+    <!-- ========================= -->
+
+    <div id="courseManagement" class="page">
+      <h2 class="page-title">Course Management</h2>
+
+      <div class="modern-card mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">All Courses</h5>
+          <button class="modern-btn btn-primary-modern"
+                  onclick="openModal('addCourseModal')">
+            <i class="bi bi-plus-lg me-1"></i>Add Course
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-modern">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Credits</th>
+                <th>Instructor</th>
+                <th>Capacity</th>
+                <th>Enrolled</th>
+                <th>Semester</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CMPG311</strong></td>
+                <td>Database Systems</td>
+                <td>16</td>
+                <td>Dr. Nkosi</td>
+                <td>60</td>
+                <td>
+                  <div>45</div>
+                  <div class="capacity-bar mt-1">
+                    <div class="capacity-fill med" style="width:75%"></div>
+                  </div>
+                </td>
+                <td><span class="badge-modern badge-info">Semester 1</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('Course updated','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('CMPG311')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CMPG313</strong></td>
+                <td>Software Engineering</td>
+                <td>16</td>
+                <td>Prof. Dlamini</td>
+                <td>50</td>
+                <td>
+                  <div>50</div>
+                  <div class="capacity-bar mt-1">
+                    <div class="capacity-fill high" style="width:100%"></div>
+                  </div>
+                </td>
+                <td><span class="badge-modern badge-info">Semester 1</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('Course updated','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('CMPG313')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>CMPG321</strong></td>
+                <td>Object Oriented Programming</td>
+                <td>16</td>
+                <td>Dr. Mokoena</td>
+                <td>70</td>
+                <td>
+                  <div>28</div>
+                  <div class="capacity-bar mt-1">
+                    <div class="capacity-fill low" style="width:40%"></div>
+                  </div>
+                </td>
+                <td><span class="badge-modern badge-gray">Semester 2</span></td>
+                <td>
+                  <button class="modern-btn btn-warning-modern btn-sm-modern me-1"
+                          onclick="showToast('Course updated','warning')">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="confirmDelete('CMPG321')">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GRADE MANAGEMENT          -->
+    <!-- ========================= -->
+
+    <div id="gradeManagement" class="page">
+      <h2 class="page-title">Grade Management</h2>
+
+      <div class="modern-card mb-3">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label>Filter by Course</label>
+            <select class="form-select">
+              <option>All Courses</option>
+              <option>CMPG311</option>
+              <option>CMPG313</option>
+              <option>CMPG321</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-modern">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Student No.</th>
+                <th>Module</th>
+                <th>Grade (%)</th>
+                <th>Symbol</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tebello Qekisi</td>
+                <td>40939170</td>
+                <td>CMPG311</td>
+                <td><input type="number" class="form-control" value="78" style="width:90px"></td>
+                <td><span class="badge-modern badge-success">B+</span></td>
+                <td>
+                  <button class="modern-btn btn-success-modern btn-sm-modern"
+                          onclick="showToast('Grade saved successfully','success')">
+                    <i class="bi bi-check-lg me-1"></i>Save
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Thapelo Kgaphola</td>
+                <td>43056717</td>
+                <td>CMPG311</td>
+                <td><input type="number" class="form-control" value="65" style="width:90px"></td>
+                <td><span class="badge-modern badge-info">C</span></td>
+                <td>
+                  <button class="modern-btn btn-success-modern btn-sm-modern"
+                          onclick="showToast('Grade saved successfully','success')">
+                    <i class="bi bi-check-lg me-1"></i>Save
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Mbali Chauke</td>
+                <td>44839197</td>
+                <td>CMPG313</td>
+                <td><input type="number" class="form-control" value="91" style="width:90px"></td>
+                <td><span class="badge-modern badge-success">A</span></td>
+                <td>
+                  <button class="modern-btn btn-success-modern btn-sm-modern"
+                          onclick="showToast('Grade saved successfully','success')">
+                    <i class="bi bi-check-lg me-1"></i>Save
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- ENROLLMENT MANAGEMENT     -->
+    <!-- ========================= -->
+
+    <div id="enrollmentManagement" class="page">
+      <h2 class="page-title">Enrollment Management</h2>
+
+      <!-- Stats row -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon"><i class="bi bi-person-check-fill"></i></div>
+            <h2>123</h2>
+            <p>Total Enrolled</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fef3c7;color:#d97706;">
+              <i class="bi bi-person-dash-fill"></i>
+            </div>
+            <h2>8</h2>
+            <p>Dropped</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#dcfce7;color:#059669;">
+              <i class="bi bi-patch-check-fill"></i>
+            </div>
+            <h2>34</h2>
+            <p>Completed</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fee2e2;color:#dc2626;">
+              <i class="bi bi-x-circle-fill"></i>
+            </div>
+            <h2>2</h2>
+            <p>Rejected</p>
+          </div>
+        </div>
+      </div>
 
       <div class="modern-card">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <div class="search-bar">
+            <i class="bi bi-search"></i>
+            <input type="text" class="form-control" placeholder="Search enrollments...">
+          </div>
+          <div class="d-flex gap-2">
+            <select class="form-select" style="width:160px;">
+              <option>All Courses</option>
+              <option>CMPG311</option>
+              <option>CMPG313</option>
+              <option>CMPG321</option>
+            </select>
+            <select class="form-select" style="width:160px;">
+              <option>All Statuses</option>
+              <option>Enrolled</option>
+              <option>Dropped</option>
+              <option>Completed</option>
+            </select>
+          </div>
+        </div>
 
-        <h4>CMPG311</h4>
+        <div class="table-responsive">
+          <table class="table table-modern">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Student No.</th>
+                <th>Course</th>
+                <th>Enroll Date</th>
+                <th>Semester</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tebello Qekisi</td>
+                <td>40939170</td>
+                <td>CMPG311</td>
+                <td>2026-02-03</td>
+                <td>Semester 1</td>
+                <td><span class="badge-modern badge-success">Enrolled</span></td>
+                <td>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="dropEnrollment('Tebello Qekisi','CMPG311')">
+                    <i class="bi bi-person-dash-fill me-1"></i>Drop
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Thapelo Kgaphola</td>
+                <td>43056717</td>
+                <td>CMPG311</td>
+                <td>2026-02-03</td>
+                <td>Semester 1</td>
+                <td><span class="badge-modern badge-success">Enrolled</span></td>
+                <td>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="dropEnrollment('Thapelo Kgaphola','CMPG311')">
+                    <i class="bi bi-person-dash-fill me-1"></i>Drop
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Mbali Chauke</td>
+                <td>44839197</td>
+                <td>CMPG313</td>
+                <td>2026-02-04</td>
+                <td>Semester 1</td>
+                <td><span class="badge-modern badge-success">Enrolled</span></td>
+                <td>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="dropEnrollment('Mbali Chauke','CMPG313')">
+                    <i class="bi bi-person-dash-fill me-1"></i>Drop
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Kulani Maphosa</td>
+                <td>45154597</td>
+                <td>CMPG321</td>
+                <td>2026-02-05</td>
+                <td>Semester 2</td>
+                <td><span class="badge-modern badge-warning">Dropped</span></td>
+                <td>
+                  <button class="modern-btn btn-success-modern btn-sm-modern"
+                          onclick="showToast('Enrollment reinstated','success')">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>Reinstate
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Craigh Mbungele</td>
+                <td>45229090</td>
+                <td>CMPG311</td>
+                <td>2026-02-03</td>
+                <td>Semester 1</td>
+                <td><span class="badge-modern badge-gray">Completed</span></td>
+                <td>
+                  <span class="text-secondary" style="font-size:12px;">No actions</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-        <button class="modern-btn btn-primary-modern mt-3">
-          Edit Course
-        </button>
+
+    <!-- ========================= -->
+    <!-- WAITLIST MANAGEMENT       -->
+    <!-- ========================= -->
+
+    <div id="waitlistManagement" class="page">
+      <h2 class="page-title">Waitlist Management</h2>
+
+      <!-- Course waitlist summary cards -->
+      <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+          <div class="modern-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="mb-1">CMPG313</h5>
+                <p class="mb-2" style="font-size:13px;color:var(--secondary-text);">
+                  Software Engineering
+                </p>
+                <span class="badge-modern badge-danger">Full — 50/50</span>
+              </div>
+              <div class="text-end">
+                <div style="font-size:28px;font-weight:700;color:#ef4444;">7</div>
+                <div style="font-size:12px;color:var(--secondary-text);">Waiting</div>
+              </div>
+            </div>
+            <div class="capacity-bar mt-3">
+              <div class="capacity-fill high" style="width:100%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="modern-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="mb-1">CMPG311</h5>
+                <p class="mb-2" style="font-size:13px;color:var(--secondary-text);">
+                  Database Systems
+                </p>
+                <span class="badge-modern badge-warning">Near Full — 45/60</span>
+              </div>
+              <div class="text-end">
+                <div style="font-size:28px;font-weight:700;color:#f59e0b;">3</div>
+                <div style="font-size:12px;color:var(--secondary-text);">Waiting</div>
+              </div>
+            </div>
+            <div class="capacity-bar mt-3">
+              <div class="capacity-fill med" style="width:75%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="modern-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="mb-1">CMPG321</h5>
+                <p class="mb-2" style="font-size:13px;color:var(--secondary-text);">
+                  Object Oriented Programming
+                </p>
+                <span class="badge-modern badge-success">Available — 28/70</span>
+              </div>
+              <div class="text-end">
+                <div style="font-size:28px;font-weight:700;color:#10b981;">0</div>
+                <div style="font-size:12px;color:var(--secondary-text);">Waiting</div>
+              </div>
+            </div>
+            <div class="capacity-bar mt-3">
+              <div class="capacity-fill low" style="width:40%"></div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
+      <!-- Waitlist detail table -->
+      <div class="modern-card">
+        <h5 class="mb-3">Waitlist Queue</h5>
+
+        <div class="table-responsive">
+          <table class="table table-modern">
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Student</th>
+                <th>Student No.</th>
+                <th>Course</th>
+                <th>Date Added</th>
+                <th>Status</th>
+                <th>Offer Expires</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#1</strong></td>
+                <td>Paballo Bogacwi</td>
+                <td>52442179</td>
+                <td>CMPG313</td>
+                <td>2026-02-10</td>
+                <td><span class="badge-modern badge-warning">Offered</span></td>
+                <td style="color:#ef4444;font-size:12px;">Expires in 14 hrs</td>
+                <td>
+                  <button class="modern-btn btn-success-modern btn-sm-modern me-1"
+                          onclick="showToast('Offer extended by 24hrs','success')">
+                    Extend
+                  </button>
+                  <button class="modern-btn btn-danger-modern btn-sm-modern"
+                          onclick="expireOffer('Paballo Bogacwi')">
+                    Expire
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#2</strong></td>
+                <td>Siyabonga Nkosi</td>
+                <td>46499458</td>
+                <td>CMPG313</td>
+                <td>2026-02-11</td>
+                <td><span class="badge-modern badge-info">Waiting</span></td>
+                <td style="color:var(--secondary-text);font-size:12px;">—</td>
+                <td>
+                  <button class="modern-btn btn-primary-modern btn-sm-modern"
+                          onclick="showToast('Offer sent to Siyabonga Nkosi','success')">
+                    Send Offer
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#3</strong></td>
+                <td>Dakalo Maligana</td>
+                <td>43771920</td>
+                <td>CMPG313</td>
+                <td>2026-02-12</td>
+                <td><span class="badge-modern badge-info">Waiting</span></td>
+                <td style="color:var(--secondary-text);font-size:12px;">—</td>
+                <td>
+                  <button class="modern-btn btn-primary-modern btn-sm-modern"
+                          onclick="showToast('Offer sent to Dakalo Maligana','success')">
+                    Send Offer
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#1</strong></td>
+                <td>Kulani Maphosa</td>
+                <td>45154597</td>
+                <td>CMPG311</td>
+                <td>2026-02-14</td>
+                <td><span class="badge-modern badge-info">Waiting</span></td>
+                <td style="color:var(--secondary-text);font-size:12px;">—</td>
+                <td>
+                  <button class="modern-btn btn-primary-modern btn-sm-modern"
+                          onclick="showToast('Offer sent to Kulani Maphosa','success')">
+                    Send Offer
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-6">
 
-      <div class="modern-card">
+    <!-- ========================= -->
+    <!-- REGISTRATION HOLDS        -->
+    <!-- ========================= -->
 
-        <h4>CMPG313</h4>
+    <div id="holdsManagement" class="page">
+      <h2 class="page-title">Registration Holds</h2>
 
-        <button class="modern-btn btn-primary-modern mt-3">
-          Edit Course
-        </button>
-
+      <!-- Stats -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fee2e2;color:#dc2626;">
+              <i class="bi bi-slash-circle-fill"></i>
+            </div>
+            <h2>5</h2>
+            <p>Active Holds</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#dcfce7;color:#059669;">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h2>12</h2>
+            <p>Resolved This Month</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fef3c7;color:#d97706;">
+              <i class="bi bi-cash-stack"></i>
+            </div>
+            <h2>3</h2>
+            <p>Financial Holds</p>
+          </div>
+        </div>
       </div>
 
+      <!-- Active holds -->
+      <h5 class="mb-3">Active Holds</h5>
+
+      <div class="hold-card">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <strong>Kulani Maphosa</strong>
+              <span class="badge-modern badge-danger">Financial</span>
+            </div>
+            <div style="font-size:13px;color:var(--secondary-text);">
+              45154597 &nbsp;•&nbsp; Outstanding fees from 2025 — R4,200
+            </div>
+            <div style="font-size:12px;color:var(--secondary-text);margin-top:4px;">
+              Hold placed: 2026-01-15
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="modern-btn btn-success-modern btn-sm-modern"
+                    onclick="resolveHold('Kulani Maphosa')">
+              <i class="bi bi-check-lg me-1"></i>Resolve Hold
+            </button>
+            <button class="modern-btn btn-primary-modern btn-sm-modern"
+                    onclick="showToast('Payment reminder sent','success')">
+              <i class="bi bi-envelope-fill me-1"></i>Send Reminder
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hold-card">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <strong>Paballo Bogacwi</strong>
+              <span class="badge-modern badge-danger">Financial</span>
+            </div>
+            <div style="font-size:13px;color:var(--secondary-text);">
+              52442179 &nbsp;•&nbsp; NSFAS AOD not signed for 2026
+            </div>
+            <div style="font-size:12px;color:var(--secondary-text);margin-top:4px;">
+              Hold placed: 2026-01-20
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="modern-btn btn-success-modern btn-sm-modern"
+                    onclick="resolveHold('Paballo Bogacwi')">
+              <i class="bi bi-check-lg me-1"></i>Resolve Hold
+            </button>
+            <button class="modern-btn btn-primary-modern btn-sm-modern"
+                    onclick="showToast('Payment reminder sent','success')">
+              <i class="bi bi-envelope-fill me-1"></i>Send Reminder
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hold-card">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <strong>Dakalo Maligana</strong>
+              <span class="badge-modern badge-warning">Records</span>
+            </div>
+            <div style="font-size:13px;color:var(--secondary-text);">
+              43771920 &nbsp;•&nbsp; Missing matric certificate — documentation required
+            </div>
+            <div style="font-size:12px;color:var(--secondary-text);margin-top:4px;">
+              Hold placed: 2026-01-18
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="modern-btn btn-success-modern btn-sm-modern"
+                    onclick="resolveHold('Dakalo Maligana')">
+              <i class="bi bi-check-lg me-1"></i>Resolve Hold
+            </button>
+            <button class="modern-btn btn-primary-modern btn-sm-modern"
+                    onclick="showToast('Reminder sent','success')">
+              <i class="bi bi-envelope-fill me-1"></i>Send Reminder
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add new hold -->
+      <div class="modern-card mt-4">
+        <h5 class="mb-3">Place New Hold</h5>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label>Student Number</label>
+            <input type="text" class="form-control" placeholder="e.g. 40939170">
+          </div>
+          <div class="col-md-4">
+            <label>Hold Type</label>
+            <select class="form-select">
+              <option>Financial</option>
+              <option>Records</option>
+              <option>Studies Terminated</option>
+              <option>International</option>
+              <option>Transfer</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label>Description</label>
+            <input type="text" class="form-control" placeholder="Reason for hold">
+          </div>
+          <div class="col-12">
+            <button class="modern-btn btn-danger-modern"
+                    onclick="showToast('Hold placed on student','warning')">
+              <i class="bi bi-slash-circle me-1"></i>Place Hold
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
-  </div>
 
+    <!-- ========================= -->
+    <!-- REPORTS                   -->
+    <!-- ========================= -->
+
+    <div id="reports" class="page">
+      <h2 class="page-title">Reports</h2>
+
+      <!-- Summary stats -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+            <h2>165</h2>
+            <p>Total Students</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#dcfce7;color:#059669;">
+              <i class="bi bi-journal-bookmark-fill"></i>
+            </div>
+            <h2>12</h2>
+            <p>Active Courses</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fef3c7;color:#d97706;">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <h2>10</h2>
+            <p>On Waitlists</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="modern-card stats-card">
+            <div class="stat-icon" style="background:#fee2e2;color:#dc2626;">
+              <i class="bi bi-slash-circle-fill"></i>
+            </div>
+            <h2>5</h2>
+            <p>Active Holds</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Enrollment per course chart -->
+        <div class="col-md-6">
+          <div class="modern-card">
+            <h5 class="mb-4">Enrollment per Course</h5>
+            <div class="chart-bar-wrap">
+              <div class="chart-col">
+                <div class="chart-bar" style="height:100px;background:#2563eb;"></div>
+                <div class="chart-label">CMPG311<br>45</div>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height:133px;background:#ef4444;"></div>
+                <div class="chart-label">CMPG313<br>50 (Full)</div>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height:53px;background:#10b981;"></div>
+                <div class="chart-label">CMPG321<br>28</div>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height:80px;background:#2563eb;"></div>
+                <div class="chart-label">CMPG211<br>30</div>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height:112px;background:#f59e0b;"></div>
+                <div class="chart-label">CMPG221<br>42</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capacity usage table -->
+        <div class="col-md-6">
+          <div class="modern-card">
+            <h5 class="mb-3">Capacity Usage</h5>
+            <div class="table-responsive">
+              <table class="table table-modern">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Enrolled</th>
+                    <th>Capacity</th>
+                    <th>Usage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CMPG311</td>
+                    <td>45</td>
+                    <td>60</td>
+                    <td>
+                      <div class="capacity-bar">
+                        <div class="capacity-fill med" style="width:75%"></div>
+                      </div>
+                      <small>75%</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CMPG313</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>
+                      <div class="capacity-bar">
+                        <div class="capacity-fill high" style="width:100%"></div>
+                      </div>
+                      <small style="color:#ef4444;">100% — Full</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CMPG321</td>
+                    <td>28</td>
+                    <td>70</td>
+                    <td>
+                      <div class="capacity-bar">
+                        <div class="capacity-fill low" style="width:40%"></div>
+                      </div>
+                      <small>40%</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CMPG211</td>
+                    <td>30</td>
+                    <td>55</td>
+                    <td>
+                      <div class="capacity-bar">
+                        <div class="capacity-fill low" style="width:55%"></div>
+                      </div>
+                      <small>55%</small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hold types breakdown -->
+        <div class="col-md-6">
+          <div class="modern-card">
+            <h5 class="mb-3">Hold Types Breakdown</h5>
+            <div class="table-responsive">
+              <table class="table table-modern">
+                <thead>
+                  <tr><th>Hold Type</th><th>Count</th><th>% of Total</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge-modern badge-danger">Financial</span></td>
+                    <td>3</td>
+                    <td>60%</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge-modern badge-warning">Records</span></td>
+                    <td>1</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge-modern badge-gray">International</span></td>
+                    <td>1</td>
+                    <td>20%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent activity -->
+        <div class="col-md-6">
+          <div class="modern-card">
+            <h5 class="mb-3">Recent Activity</h5>
+            <div style="font-size:13px;">
+              <div class="d-flex gap-3 mb-3 align-items-start">
+                <div style="width:36px;height:36px;border-radius:50%;background:#dcfce7;color:#059669;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <div>
+                  <div><strong>Tebello Qekisi</strong> enrolled in CMPG311</div>
+                  <div style="color:var(--secondary-text);font-size:12px;">2026-02-03 09:14</div>
+                </div>
+              </div>
+              <div class="d-flex gap-3 mb-3 align-items-start">
+                <div style="width:36px;height:36px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i class="bi bi-slash-circle-fill"></i>
+                </div>
+                <div>
+                  <div><strong>Kulani Maphosa</strong> — Financial hold placed</div>
+                  <div style="color:var(--secondary-text);font-size:12px;">2026-01-15 11:30</div>
+                </div>
+              </div>
+              <div class="d-flex gap-3 mb-3 align-items-start">
+                <div style="width:36px;height:36px;border-radius:50%;background:#fef3c7;color:#d97706;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i class="bi bi-hourglass-split"></i>
+                </div>
+                <div>
+                  <div><strong>Paballo Bogacwi</strong> added to CMPG313 waitlist</div>
+                  <div style="color:var(--secondary-text);font-size:12px;">2026-02-10 14:05</div>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-start">
+                <div style="width:36px;height:36px;border-radius:50%;background:#dbeafe;color:#1e40af;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i class="bi bi-pencil-square"></i>
+                </div>
+                <div>
+                  <div><strong>Mbali Chauke</strong> — Grade updated: CMPG313 → 91%</div>
+                  <div style="color:var(--secondary-text);font-size:12px;">2026-02-18 08:50</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+</div><!-- end mainWebsite -->
+
+
+<!-- ========================= -->
+<!-- ADD USER MODAL            -->
+<!-- ========================= -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label>Full Name</label>
+          <input type="text" class="form-control" placeholder="Enter full name">
+        </div>
+        <div class="mb-3">
+          <label>Student Number</label>
+          <input type="text" class="form-control" placeholder="e.g. 40939170">
+        </div>
+        <div class="mb-3">
+          <label>Email Address</label>
+          <input type="email" class="form-control" placeholder="number@mynwu.ac.za">
+        </div>
+        <div class="mb-3">
+          <label>Role</label>
+          <select class="form-select">
+            <option>Student</option>
+            <option>Admin</option>
+            <option>Instructor</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="modern-btn btn-primary-modern"
+                onclick="addUser()">
+          <i class="bi bi-plus-lg me-1"></i>Add User
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!-- ========================= -->
-<!-- GRADE MANAGEMENT PAGE -->
+<!-- ADD COURSE MODAL          -->
 <!-- ========================= -->
-
-<div id="gradeManagement" class="page">
-
-  <h2 class="page-title">
-    Grade Management
-  </h2>
-
-  <div class="modern-card">
-
-    <table class="table table-modern">
-
-      <thead>
-
-        <tr>
-
-          <th>Student</th>
-          <th>Module</th>
-          <th>Grade</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        <tr>
-
-          <td>Craigh Mbungele</td>
-          <td>CMPG311</td>
-          <td>
-
-            <input type="number"
-                   class="form-control"
-                   value="78">
-
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
+<div class="modal fade" id="addCourseModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Course</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label>Course Code</label>
+          <input type="text" class="form-control" placeholder="e.g. CMPG311">
+        </div>
+        <div class="mb-3">
+          <label>Course Name</label>
+          <input type="text" class="form-control" placeholder="Course name">
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>Credits</label>
+            <input type="number" class="form-control" placeholder="16">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Max Capacity</label>
+            <input type="number" class="form-control" placeholder="60">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Instructor</label>
+          <select class="form-select">
+            <option>Dr. Nkosi</option>
+            <option>Prof. Dlamini</option>
+            <option>Dr. Mokoena</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Semester</label>
+          <select class="form-select">
+            <option>Semester 1</option>
+            <option>Semester 2</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="modern-btn btn-primary-modern"
+                onclick="addCourse()">
+          <i class="bi bi-plus-lg me-1"></i>Add Course
+        </button>
+      </div>
+    </div>
   </div>
-
 </div>
 
-  </div>
 
-</div>
-
-<!-- ========================= -->
-<!-- JAVASCRIPT -->
-<!-- ========================= -->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
 let currentRole = "";
 
-
-// =========================
-// LOGIN SYSTEM
-// =========================
+// ── LOGIN ───────────────────────────────────────────
 function loginUser(){
-
-  const role =
-    document.getElementById("loginRole").value;
-
+  const role = document.getElementById("loginRole").value;
   currentRole = role;
 
-  // SHOW WEBSITE
-  document.getElementById("loginPage")
-    .style.display = "none";
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("mainWebsite").style.display = "flex";
 
-  document.getElementById("mainWebsite")
-    .style.display = "flex";
-
-
-  // =========================
-  // STUDENT LOGIN
-  // =========================
   if(role === "student"){
-
-    document.getElementById("studentMenu")
-      .style.display = "block";
-
-    document.getElementById("adminMenu")
-      .style.display = "none";
-
-    document.getElementById("studentProfile")
-      .style.display = "block";
-
-    document.getElementById("staffProfile")
-      .style.display = "none";
-
-    document.getElementById("dashboardBtn")
-      .style.display = "block";
-
-    document.getElementById("profileInitials")
-      .innerHTML = "CM";
-
+    document.getElementById("studentMenu").style.display = "block";
+    document.getElementById("adminMenu").style.display  = "none";
+    document.getElementById("studentProfile").style.display = "block";
+    document.getElementById("staffProfile").style.display   = "none";
+    document.getElementById("dashboardBtn").style.display   = "block";
+    document.getElementById("profileInitials").innerHTML = "CM";
     showPage("dashboard");
-
-  }
-
-  // =========================
-  // ADMIN LOGIN
-  // =========================
-  else{
-
-    document.getElementById("studentMenu")
-      .style.display = "none";
-
-    document.getElementById("adminMenu")
-      .style.display = "block";
-
-    document.getElementById("studentProfile")
-      .style.display = "none";
-
-    document.getElementById("staffProfile")
-      .style.display = "block";
-
-    document.getElementById("dashboardBtn")
-      .style.display = "none";
-
-    document.getElementById("profileInitials")
-      .innerHTML = "AD";
-
+  } else {
+    document.getElementById("studentMenu").style.display = "none";
+    document.getElementById("adminMenu").style.display   = "block";
+    document.getElementById("studentProfile").style.display = "none";
+    document.getElementById("staffProfile").style.display   = "block";
+    document.getElementById("dashboardBtn").style.display   = "none";
+    document.getElementById("profileInitials").innerHTML = "AD";
     showPage("users");
-
   }
-
 }
 
-
-// =========================
-// LOGOUT
-// =========================
+// ── LOGOUT ──────────────────────────────────────────
 function logoutUser(){
-
-  document.getElementById("mainWebsite")
-    .style.display = "none";
-
-  document.getElementById("loginPage")
-    .style.display = "flex";
-
-  document.getElementById("loginEmail").value = "";
+  document.getElementById("mainWebsite").style.display = "none";
+  document.getElementById("loginPage").style.display   = "flex";
+  document.getElementById("loginEmail").value    = "";
   document.getElementById("loginPassword").value = "";
-
   currentRole = "";
-
 }
 
+// ── PAGE SWITCHING ───────────────────────────────────
+function showPage(pageId, btn){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+  const pg = document.getElementById(pageId);
+  if(pg) pg.classList.add('active-page');
 
-// =========================
-// PAGE SWITCHING
-// =========================
-function showPage(pageId){
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
+  if(btn) btn.classList.add('active-nav');
 
-  const pages =
-    document.querySelectorAll('.page');
-
-  pages.forEach(page => {
-
-    page.classList.remove('active-page');
-
-  });
-
-  const selectedPage =
-    document.getElementById(pageId);
-
-  if(selectedPage){
-
-    selectedPage.classList.add('active-page');
-
-  }
-
+  const titles = {
+    dashboard:          "Dashboard",
+    profile:            "Profile",
+    courses:            "Courses",
+    grades:             "Grades",
+    payments:           "Payments",
+    users:              "User Management",
+    courseManagement:   "Course Management",
+    gradeManagement:    "Grade Management",
+    enrollmentManagement:"Enrollment Management",
+    waitlistManagement: "Waitlist Management",
+    holdsManagement:    "Registration Holds",
+    reports:            "Reports",
+  };
+  document.getElementById("topbarTitle").textContent =
+    titles[pageId] || "University Management System";
 }
 
-
-// =========================
-// DARK/LIGHT MODE
-// =========================
+// ── DARK MODE ────────────────────────────────────────
 function toggleTheme(){
-
   document.body.classList.toggle('dark-mode');
-
-  const icon =
-    document.getElementById('themeIcon');
-
+  const icon = document.getElementById('themeIcon');
   if(document.body.classList.contains('dark-mode')){
-
-    icon.classList.remove('bi-moon-fill');
-    icon.classList.add('bi-sun-fill');
-
+    icon.classList.replace('bi-moon-fill','bi-sun-fill');
+  } else {
+    icon.classList.replace('bi-sun-fill','bi-moon-fill');
   }
+}
 
-  else{
+// ── TOAST ────────────────────────────────────────────
+function showToast(message, type='success'){
+  const icons = { success:'bi-check-circle-fill', danger:'bi-x-circle-fill', warning:'bi-exclamation-circle-fill' };
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast-msg ${type}`;
+  toast.innerHTML = `<i class="bi ${icons[type]}"></i>${message}`;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3500);
+}
 
-    icon.classList.remove('bi-sun-fill');
-    icon.classList.add('bi-moon-fill');
-    
+// ── MODAL HELPER ─────────────────────────────────────
+function openModal(id){
+  const modal = new bootstrap.Modal(document.getElementById(id));
+  modal.show();
+}
 
+// ── CONFIRM DELETE ───────────────────────────────────
+function confirmDelete(name){
+  if(confirm(`Are you sure you want to delete "${name}"? This cannot be undone.`)){
+    showToast(`${name} deleted successfully`, 'danger');
   }
+}
 
+// ── DROP ENROLLMENT ──────────────────────────────────
+function dropEnrollment(name, course){
+  if(confirm(`Drop ${name} from ${course}?`)){
+    showToast(`${name} dropped from ${course}`, 'warning');
+  }
+}
+
+// ── EXPIRE OFFER ─────────────────────────────────────
+function expireOffer(name){
+  if(confirm(`Expire the waitlist offer for ${name}?`)){
+    showToast(`Offer expired — next student will be notified`, 'warning');
+  }
+}
+
+// ── RESOLVE HOLD ─────────────────────────────────────
+function resolveHold(name){
+  if(confirm(`Resolve the registration hold for ${name}?`)){
+    showToast(`Hold resolved for ${name}`, 'success');
+  }
+}
+
+// ── ADD USER (modal) ─────────────────────────────────
+function addUser(){
+  bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
+  showToast('New user added successfully', 'success');
+}
+
+// ── ADD COURSE (modal) ───────────────────────────────
+function addCourse(){
+  bootstrap.Modal.getInstance(document.getElementById('addCourseModal')).hide();
+  showToast('New course added successfully', 'success');
+}
+
+// ── USER SEARCH ──────────────────────────────────────
+function filterUsers(){
+  const q = document.getElementById('userSearch').value.toLowerCase();
+  document.querySelectorAll('#userTableBody tr').forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
 }
 
 </script>
-
-
 
 </body>
 </html>
