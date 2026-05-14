@@ -353,19 +353,23 @@ BEGIN
     IF :NEW.payment_status = 'Unpaid' THEN
 
         UPDATE Student
-        SET financial_hold = 'YES'
+        SET financial_hold = 'Y'
         WHERE student_id = :NEW.student_id;
 
         INSERT INTO Registration_Hold (
             hold_id,
             student_id,
             hold_type,
+            hold_reason,
+            hold_date,
             resolved_date
         )
         VALUES (
             hold_seq.NEXTVAL,
             :NEW.student_id,
             'Finances',
+            'Outstanding balance payment',
+            SYSDATE,
             NULL
         );
 
@@ -381,12 +385,12 @@ BEGIN
 
     IF :NEW.payment_status IN (
         'Paid',
-        'NSFAS PAID',
-        'Bursary Paid'
+        'NSFAS Approved',
+        'Bursary Approved'
     ) THEN
 
         UPDATE Student
-        SET financial_hold = 'NO'
+        SET financial_hold = 'N'
         WHERE student_id = :NEW.student_id;
 
     END IF;
@@ -402,11 +406,11 @@ DECLARE
 BEGIN
 
     SELECT financial_hold
-    TO _hold
+    INTO _hold
     FROM Student
     WHERE student_id = :NEW.student_id;
 
-    IF _hold = 'YES' THEN
+    IF _hold = 'Y' THEN
 
         RAISE_APPLICATION_ERROR(
             -20301,
@@ -431,7 +435,7 @@ BEGIN
     FROM Student
     WHERE student_id = :NEW.student_id;
 
-    IF _hold = 'YES' AND _aod = 'NO' THEN
+    IF _hold = 'Y' AND _aod = 'N' THEN
 
         RAISE_APPLICATION_ERROR(
             -20302,
