@@ -1,0 +1,23 @@
+Student Clicks Register
+            |
+            v
+Frontend Sends POST Request
+            |
+            v
+Flask API Receives Request
+            |
+            +-------------------+
+            |                   |
+            v                   v
+Check Duplicate?          Check Financial Hold?
+            |                   |
+            v                   v
+Check Capacity?          Registration Blocked
+            |
+      +-----+------+
+      |            |
+      v            v
+Space Available   Course Full
+      |            |
+      v            v
+Enroll Student   Add To Waitlist
