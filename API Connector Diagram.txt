@@ -1,0 +1,19 @@
++----------------------+
+|     Frontend         |
+| HTML + Bootstrap |
++----------+-----------+
+           |
+           | HTTP Requests (fetch API)
+           v
++----------------------+
+|      Flask API       |
+|  app.py + routes/    |
++----------+-----------+
+           |
+           | SQL Queries
+           v
++----------------------+
+|   MySQL Database     |
+| Student, Course,     |
+| Enrollment, Payment  |
++----------------------+
