@@ -1,0 +1,26 @@
+Student
+   |
+   | 1:M
+   v
+Enrollment
+   ^
+   |
+Course
+
+Student
+   |
+   | 1:M
+   v
+Payment
+
+Student
+   |
+   | 1:M
+   v
+Registration_Hold
+
+Student
+   |
+   | 1:M
+   v
+Waitlist
