@@ -2,5 +2,6 @@ flask
 flask-cors
 mysql-connector-python
 These are what are required for the API to run correctly, below is the command needed to install the python libararies required for the API Connector to work:
-
-pip install flask flask-cors mysql-connector-python
+pip install flask-cors
+pip install flask
+pip install mysql-connector-python
